@@ -9,8 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+<<<<<<< HEAD
         <activity android:name=".Activities.RegisterActivity"></activity>
         <activity android:name=".Activities.LoginActivity">
+=======
+        <activity android:name=".Activities.PomodoroActivity"></activity>
+        <activity android:name=".Activities.RankingListActivity" />
+        <activity android:name=".Activities.HomePageActivity" />
+        <activity android:name=".Activities.MainActivity">
+>>>>>>> 923fb1483c32affb183c4e6b6c93c9f2e7e41c53
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
