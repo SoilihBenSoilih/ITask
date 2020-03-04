@@ -47,14 +47,13 @@
         android:id="@+id/button_login"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="@string/se_connecter"
-        android:background="@drawable/button_rectangle_pink"
         android:layout_below="@+id/editText_password"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/button_rectangle_pink"
+        android:text="@string/se_connecter"
         android:textColor="#FFFFFF"
-        android:textSize="20sp"
-        android:layout_centerHorizontal="true">
-    </Button>
+        android:textSize="20sp"></Button>
 
     <TextView
         android:id="@+id/textView_register"
