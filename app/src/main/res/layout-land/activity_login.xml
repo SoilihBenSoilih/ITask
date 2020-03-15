@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".Activities.LoginActivity">
+
+    <ImageView
+        android:id="@+id/icon_connexion"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/editText_email"
+        android:src="@drawable/icon_login"/>
+
+    <EditText
+        android:id="@+id/editText_email"
+        android:layout_width="250dp"
+        android:layout_height="36dp"
+        android:background="@drawable/edit_text_grey"
+        android:drawableLeft="@drawable/ic_action_person"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/icon_connexion"
+        app:layout_constraintBottom_toTopOf="@id/editText_password"
+        tools:layout_editor_absoluteY="280dp" />
+
+    <EditText
+        android:id="@+id/editText_password"
+        android:layout_width="250dp"
+        android:layout_height="36dp"
+        android:ems="10"
+        android:hint="Password"
+        android:background="@drawable/edit_text_grey"
+        android:drawableLeft="@drawable/ic_action_password"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editText_email"
+        app:layout_constraintBottom_toTopOf="@id/button_login"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/button_login"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText_password"
+        android:background="@drawable/button_rectangle_pink"
+        android:text="@string/se_connecter"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_password"
+        />
+
+    <TextView
+        android:id="@+id/textView_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Register"
+        android:textColor="#ffffff"
+        android:textSize="15sp"
+        app:layout_constraintTop_toTopOf="@id/button_login"
+        app:layout_constraintBottom_toTopOf="@id/textView_skip"
+        app:layout_constraintLeft_toRightOf="@id/button_login"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="15dp"/>
+
+
+    <TextView
+        android:id="@+id/textView_skip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:text="Skip"
+        android:textColor="#ffffff"
+        app:layout_constraintLeft_toRightOf="@id/button_login"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView_register"
+        app:layout_constraintBottom_toBottomOf="@id/button_login"
+        android:layout_margin="20dp"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

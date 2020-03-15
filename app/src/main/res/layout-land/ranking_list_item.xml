@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="90dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/background"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/rank_number_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/profil_image_imageView"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:text="1" />
+
+            <ImageView
+                android:id="@+id/profil_image_imageView"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                app:layout_constraintLeft_toRightOf="@id/rank_number_textView"
+                app:layout_constraintTop_toTopOf="@id/rank_number_textView"
+                app:layout_constraintBottom_toBottomOf="@id/rank_number_textView"
+                app:layout_constraintRight_toLeftOf="@id/email_textView"
+                android:src="@mipmap/ic_launcher" />
+
+            <TextView
+                android:id="@+id/email_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toRightOf="@id/profil_image_imageView"
+                app:layout_constraintTop_toTopOf="@id/profil_image_imageView"
+                app:layout_constraintBottom_toBottomOf="@id/profil_image_imageView"
+                app:layout_constraintRight_toLeftOf="@id/number_of_hours_textView"
+                tools:text="yxz@itask.com" />
+
+            <TextView
+                android:id="@+id/number_of_hours_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:text="2345h"
+                app:layout_constraintLeft_toRightOf="@id/email_textView"
+                app:layout_constraintTop_toTopOf="@id/email_textView"
+                app:layout_constraintBottom_toBottomOf="@id/email_textView"
+                app:layout_constraintRight_toRightOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
