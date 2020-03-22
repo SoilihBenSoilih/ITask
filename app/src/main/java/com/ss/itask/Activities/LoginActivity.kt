@@ -3,10 +3,15 @@ package com.ss.itask.Activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import com.ss.itask.App
+import com.ss.itask.Model.User
 import com.ss.itask.R
+import com.ss.itask.dao.Database
+import com.ss.itask.dao.UserDAO
 
 class LoginActivity : AppCompatActivity() {
 
@@ -23,11 +28,19 @@ class LoginActivity : AppCompatActivity() {
 
         textView_register.setOnClickListener(){
             val intent = Intent(this, RegisterActivity::class.java)
+            val user = User("blalala","blavbla","blabla@gmail.com","blass123")
+            user.id = 1
+            val id = App.database.updateUSer(user)
+            Log.e("INSERTION","Valeur de l'id: $id")
             startActivity(intent)
         }
 
         textView_skip.setOnClickListener(){
             val intent = Intent(this, HomePageActivity::class.java)
+            val list = Database(App.instance).getAllUsers()
+            for (user in list){
+                Log.e("====Lecture====",user.toString())
+            }
             startActivity(intent)
         }
 
