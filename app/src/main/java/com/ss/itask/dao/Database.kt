@@ -3,6 +3,7 @@ package com.ss.itask.dao
 import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
+import android.database.sqlite.SQLiteException
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
 import com.ss.itask.Model.Project
@@ -15,6 +16,8 @@ private const val DATABASE_VERSION = 1
 class Database (context: Context):SQLiteOpenHelper(context, DATABASE_NAME,null, DATABASE_VERSION){
     override fun onCreate(db: SQLiteDatabase?) {
         db?.execSQL(UserDAO.USER_CREATE_TABLE)
+        db?.execSQL(ProjectDAO.PROJECT_CREATE_TABLE)
+        db?.execSQL(TaskDAO.USER_CREATE_TABLE)
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
@@ -25,7 +28,7 @@ class Database (context: Context):SQLiteOpenHelper(context, DATABASE_NAME,null, 
         return writableDatabase.insert(UserDAO.USER_TABLE_NAME,null,values)
     }
     fun saveProject(values: ContentValues):Long{
-        return writableDatabase.insert(ProjectDAO.PROJECT_TABLE_NAME,null,values)
+            return writableDatabase.insert(ProjectDAO.PROJECT_TABLE_NAME,null,values)
     }
     fun  saveTask(values: ContentValues):Long{
         return writableDatabase.insert(TaskDAO.TASK_TABLE_NAME,null,values)
@@ -92,7 +95,7 @@ class Database (context: Context):SQLiteOpenHelper(context, DATABASE_NAME,null, 
         return updateCount > 0
     }
 
-    fun getTasksByProject(projectId: Long):MutableList<Task>{
+   private  fun getTasksByProject(projectId: Long):MutableList<Task>{
         val tasks = mutableListOf<Task>()
         readableDatabase.rawQuery(TaskDAO.TASK_QUERY_SELECT_BY_PROJECT+projectId,null).use { cursor ->
             while (cursor.moveToNext()){

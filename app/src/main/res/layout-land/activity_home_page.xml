@@ -32,10 +32,10 @@
         app:layout_constraintLeft_toLeftOf="@+id/logo_imageView"
         app:layout_constraintRight_toRightOf="@id/logo_imageView"/>
 
-    <ImageButton
+    <Button
         android:id="@+id/add_project_button"
         android:layout_width="160dp"
-        android:layout_height="160dp"
+        android:layout_height="140dp"
         android:layout_below="@id/email_textView"
         android:layout_alignParentLeft="true"
         android:src="@drawable/baseline_add_white_24dp"
@@ -43,42 +43,47 @@
         app:layout_constraintRight_toLeftOf="@id/project_list_button"
         app:layout_constraintVertical_chainStyle="spread"
         app:layout_constraintHorizontal_chainStyle="packed"
+        android:background="@drawable/bggreen"
+        android:text="Ajouter un projet"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/statistics_button"/>
 
-    <ImageButton
+    <Button
         android:id="@+id/project_list_button"
         android:layout_width="160dp"
-        android:layout_height="160dp"
+        android:layout_height="140dp"
         android:layout_below="@id/email_textView"
         android:layout_alignParentRight="true"
-        android:src="@drawable/baseline_add_white_24dp"
+        android:background="@drawable/bggreen"
+        android:text="Liste projets"
         app:layout_constraintRight_toLeftOf="@id/start_pomodoro"
         app:layout_constraintLeft_toRightOf="@id/add_project_button"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/ranking_button"
         />
 
-    <ImageButton
+    <Button
         android:id="@+id/statistics_button"
         android:layout_width="160dp"
-        android:layout_height="160dp"
+        android:layout_height="140dp"
         android:layout_below="@id/add_project_button"
         android:layout_alignParentLeft="true"
-        android:src="@drawable/baseline_add_white_24dp"
+        android:background="@drawable/bggreen"
+        android:text="Statistiques"
         app:layout_constraintTop_toBottomOf="@id/add_project_button"
         app:layout_constraintLeft_toLeftOf="@id/add_project_button"
         app:layout_constraintRight_toRightOf="@id/add_project_button"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
-    <ImageButton
+    <Button
         android:id="@+id/ranking_button"
         android:layout_width="160dp"
-        android:layout_height="160dp"
+        android:layout_height="140dp"
         android:layout_below="@id/project_list_button"
         android:layout_alignParentRight="true"
-        android:src="@drawable/baseline_add_white_24dp"
+        android:background="@drawable/bggreen"
+        android:text="Classement"
         app:layout_constraintTop_toBottomOf="@id/add_project_button"
         app:layout_constraintRight_toRightOf="@id/project_list_button"
         app:layout_constraintLeft_toLeftOf="@id/project_list_button"

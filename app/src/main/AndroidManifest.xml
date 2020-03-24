@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ss.itask">
+
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -9,10 +10,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.RegisterActivity"></activity>
-        <activity android:name=".Activities.PomodoroActivity"></activity>
-        <activity android:name=".Activities.RankingListActivity"></activity>
-        <activity android:name=".Activities.HomePageActivity"></activity>
+        <activity android:name=".Activities.AddProjectActivity"></activity>
+        <activity android:name=".Activities.RegisterActivity" />
+        <activity android:name=".Activities.PomodoroActivity" />
+        <activity android:name=".Activities.RankingListActivity" />
+        <activity android:name=".Activities.HomePageActivity" />
         <activity android:name=".Activities.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,4 +23,5 @@
             </intent-filter>
         </activity>
     </application>
+
 </manifest>
