@@ -18,7 +18,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/editText_email"
-        android:src="@drawable/icon_login"/>
+        android:src="@drawable/icon_quality_time_third_idea_100"/>
 
     <EditText
         android:id="@+id/editText_email"

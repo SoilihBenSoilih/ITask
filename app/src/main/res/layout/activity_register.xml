@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/editText_pseudo"
         app:layout_constraintVertical_chainStyle="spread"
-        android:src="@drawable/icon_login"/>
+        android:src="@drawable/icon_quality_time_third_idea_100"/>
 
     <EditText
         android:id="@+id/editText_pseudo"

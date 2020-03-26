@@ -42,7 +42,7 @@
                 app:layout_constraintTop_toTopOf="@id/rank_number_textView"
                 app:layout_constraintBottom_toBottomOf="@id/rank_number_textView"
                 app:layout_constraintRight_toLeftOf="@id/email_textView"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@drawable/icon_avatar_100" />
 
             <TextView
                 android:id="@+id/email_textView"

@@ -1,5 +1,6 @@
 package com.ss.itask.Activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -19,7 +20,12 @@ class RegisterActivity : AppCompatActivity() {
         val editText_confirm_password = findViewById<EditText>(R.id.editText_confirm_password)
         val button_register = findViewById<Button>(R.id.button_register)
         val textView_skip = findViewById<TextView>(R.id.textView_skip)
-        
+
+
+        textView_skip.setOnClickListener(){
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 }

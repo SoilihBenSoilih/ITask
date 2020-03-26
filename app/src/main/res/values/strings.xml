@@ -3,4 +3,6 @@
     <string name="se_connecter">SE CONNECTER</string>
     <string name="password">password</string>
     <string name="email">email</string>
+    <string name="title_activity_main">MainActivity</string>
+
 </resources>
