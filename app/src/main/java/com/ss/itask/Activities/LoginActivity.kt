@@ -36,15 +36,13 @@ class LoginActivity : AppCompatActivity() {
         }
 
         textView_skip.setOnClickListener(){
-<<<<<<< HEAD
             val intent = Intent(this, MainActivity::class.java)
-=======
-            val intent = Intent(this, HomePageActivity::class.java)
+
+          //  val intent = Intent(this, HomePageActivity::class.java)
             val list = Database(App.instance).getAllUsers()
             for (user in list){
                 Log.e("====Lecture====",user.toString())
             }
->>>>>>> 6e0f8d2e6c2199178ac1377a35d0f8c1a4711ff2
             startActivity(intent)
         }
 

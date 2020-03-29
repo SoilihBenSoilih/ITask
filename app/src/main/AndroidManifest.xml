@@ -10,18 +10,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-<<<<<<< HEAD
+        <activity android:name=".Activities.OptionsActivity"></activity>
         <activity
             android:name=".Activities.MainActivity"
             android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-=======
-        <activity android:name=".Activities.AddProjectActivity"></activity>
->>>>>>> 6e0f8d2e6c2199178ac1377a35d0f8c1a4711ff2
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Activities.RegisterActivity" />
         <activity android:name=".Activities.PomodoroActivity" />
         <activity android:name=".Activities.RankingListActivity" />
         <activity android:name=".Activities.HomePageActivity" />
+        <activity android:name=".Activities.TimerActivity"/>
+        <activity android:name=".Activities.SettingsActivity"/>
         <activity android:name=".Activities.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

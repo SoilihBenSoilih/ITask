@@ -1,59 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/background"
-    tools:context=".Activities.PomodoroActivity">
-
-
-        <CheckBox
-            android:id="@+id/task_completed_checkBox"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintVertical_chainStyle="spread"
-            android:layout_marginRight="20dp"
-            app:layout_constraintRight_toLeftOf="@id/task_name_textView"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="@id/task_name_textView"
-            app:layout_constraintBottom_toTopOf="@id/pomodoro_imageView"
-            />
-
-    <TextView
-        android:id="@+id/task_name_textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toRightOf="@id/task_completed_checkBox"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@id/task_completed_checkBox"
-        app:layout_constraintBottom_toBottomOf="@id/task_completed_checkBox"
-        tools:text="Tâche XYZ" />
+    android:background="#211D44">
 
     <ImageView
-        android:id="@+id/pomodoro_imageView"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:src="@mipmap/ic_launcher"
-        app:layout_constraintBottom_toTopOf="@id/start_pomodoro"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/task_completed_checkBox" />
+        android:id="@+id/bgcircle"
+        android:layout_width="276dp"
+        android:layout_height="247dp"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/bgcircle"
+        app:layout_constraintHorizontal_bias="0.469"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+    <ImageView
+        android:id="@+id/icanchor"
+        android:layout_width="358dp"
+        android:layout_height="357dp"
+        android:layout_marginTop="0dp"
+        android:src="@drawable/icanchor"
+        app:layout_constraintHorizontal_bias="0.469"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-       android:id="@+id/start_pomodoro"
-        android:layout_width="84dp"
-        android:layout_height="92dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/pomodoro_imageView"
+    <Chronometer
+        android:id="@+id/timeHer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:textColor="#FFF"
+        android:textSize="62sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/buttonStart"/>
+
+
+    <Button
+        android:id="@+id/buttonStart"
+        android:layout_width="280dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="40dp"
+        android:text="Start now"
+        android:textColor="#FFF"
+        android:textSize="20sp"
+        android:textAllCaps="false"
+        android:background="@drawable/bggreen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/buttonStop"/>
+
+
+
+
+    <Button
+        android:id="@+id/buttonStop"
+        android:layout_width="280dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="40dp"
+        android:text="Finish workout"
+        android:textColor="#AF3555"
+        android:textSize="20sp"
+        android:textAllCaps="false"
+        android:background="@drawable/bgred"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
