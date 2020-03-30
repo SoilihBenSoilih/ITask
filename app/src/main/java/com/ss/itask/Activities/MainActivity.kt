@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
         start_pomodoro.setOnClickListener { view ->
             val intent = Intent(this,TimerActivity::class.java)
             startActivity(intent)
@@ -39,7 +40,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         project_list_button.setOnClickListener {
-            Toast.makeText(this,"Activity liste des projets à créer", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, ProjectListActivity::class.java)
+            startActivity(intent)
         }
 
         add_project_button.setOnClickListener {
