@@ -18,6 +18,7 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+        overridePendingTransition(R.anim.splash_in, R.anim.splash_out)
 
         val editText_email = findViewById<EditText>(R.id.editText_email)
         val editText_password = findViewById<EditText>(R.id.editText_password)
