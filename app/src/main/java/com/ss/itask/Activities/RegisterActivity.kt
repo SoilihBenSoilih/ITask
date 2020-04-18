@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import com.ss.itask.R
 
 class RegisterActivity : AppCompatActivity() {
@@ -21,6 +22,27 @@ class RegisterActivity : AppCompatActivity() {
         val button_register = findViewById<Button>(R.id.button_register)
         val textView_skip = findViewById<TextView>(R.id.textView_skip)
 
+
+        button_register.setOnClickListener(){
+            if(editText_email.length()==0 || editText_password.length()==0 || editText_pseudo.length()==0 || editText_confirm_password.length()==0){
+                if(editText_pseudo.length()==0){
+                    editText_pseudo.setError("champ requis !")
+                }
+                else if(editText_email.length()==0){
+                    editText_email.setError("champ requis !")
+                }
+                else if(editText_password.length()==0){
+                    editText_password.setError("champ requis !")
+                }
+                else {
+                    editText_confirm_password.setError("champ requis !")
+                }
+            }
+            else{
+                Toast.makeText(this, "à implémenter", Toast.LENGTH_SHORT).show()
+            }
+
+        }
 
         textView_skip.setOnClickListener(){
             val intent = Intent(this, MainActivity::class.java)

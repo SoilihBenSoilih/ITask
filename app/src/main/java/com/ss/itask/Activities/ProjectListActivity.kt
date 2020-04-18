@@ -33,6 +33,7 @@ class ProjectListActivity : AppCompatActivity(), View.OnClickListener {
 
         val toolbar = findViewById(R.id.toolbar) as androidx.appcompat.widget.Toolbar
         setSupportActionBar(toolbar)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
         recyclerView = findViewById<RecyclerView>(R.id.project_list_recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)

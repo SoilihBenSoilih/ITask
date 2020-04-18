@@ -7,18 +7,27 @@
     android:background="@drawable/background"
     tools:context=".Activities.SettingsActivity">
 
-    <fragment
-        android:id="@+id/fragment"
-        class="com.ss.itask.SettingsActivityFragment"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
-    <fragment android:id="@+id/fragment_blue"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
-        android:background="@drawable/background"
-        class="com.ss.itask.Activities.NightModeFragment">
-    </fragment>
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_alignParentTop="true"
+            app:title="Parametres"
+            android:background="#5DB7F1"/>
+
+        <fragment
+            android:id="@+id/fragment"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/toolbar"
+            class="com.ss.itask.SettingsActivityFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+    </RelativeLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

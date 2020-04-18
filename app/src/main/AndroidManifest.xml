@@ -17,7 +17,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.ProjectListActivity" />
+        <activity android:name=".Activities.ProjectListActivity"
+            android:windowSoftInputMode="adjustResize"
+            android:parentActivityName=".Activities.MainActivity">
+
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.MainActivity">
+            </meta-data>
+
+        </activity>
         <activity android:name=".Activities.OptionsActivity" />
         <activity
             android:name=".Activities.MainActivity"
@@ -25,9 +33,22 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Activities.RegisterActivity" />
         <activity android:name=".Activities.PomodoroActivity" />
-        <activity android:name=".Activities.RankingListActivity" />
+        <activity android:name=".Activities.RankingListActivity"
+            android:windowSoftInputMode="adjustResize"
+            android:parentActivityName=".Activities.MainActivity">
+        <meta-data android:name="android.support.PARENT_ACTIVITY"
+            android:value=".Activities.MainActivity">
+        </meta-data>
+        </activity>
         <activity android:name=".Activities.TimerActivity" />
-        <activity android:name=".Activities.SettingsActivity" />
+        <activity android:name=".Activities.SettingsActivity"
+            android:windowSoftInputMode="adjustResize"
+            android:parentActivityName=".Activities.MainActivity">
+
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.MainActivity">
+            </meta-data>
+        </activity>
         <activity android:name=".Activities.LoginActivity"/>
 
     </application>
