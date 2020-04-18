@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:layout_alignParentTop="true"
+        app:title="Liste des projets"
         android:background="#5DB7F1"/>
 
     <androidx.recyclerview.widget.RecyclerView

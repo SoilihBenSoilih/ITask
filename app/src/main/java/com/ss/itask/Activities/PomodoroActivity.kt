@@ -21,6 +21,7 @@ class PomodoroActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pomodoro)
 
+
         buttonStart = findViewById(R.id.buttonStart)
         buttonStop = findViewById(R.id.buttonStop)
         icAnchor = findViewById(R.id.icanchor)
