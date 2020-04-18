@@ -1,5 +1,6 @@
 package com.ss.itask.Activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -9,8 +10,10 @@ import android.view.View
 import android.widget.EditText
 import android.widget.SearchView
 import android.widget.Toast
+import androidx.core.view.get
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.ss.itask.Model.Project
 import com.ss.itask.ProjectListAdapter
 import com.ss.itask.R
 import com.ss.itask.dao.Database
@@ -20,6 +23,7 @@ class ProjectListActivity : AppCompatActivity(), View.OnClickListener {
     val database = Database(this)
 
     var projects = mutableListOf<String>()
+    var projectsList = mutableListOf<Project>()
 
     var tab = mutableListOf<String>()
 
@@ -36,14 +40,18 @@ class ProjectListActivity : AppCompatActivity(), View.OnClickListener {
 
         recyclerView = findViewById<RecyclerView>(R.id.project_list_recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
+
         var list = database.getAllProjects()
-        for(i in list){
-            projects.add(i.name)
-        }
+        projectsList = list
+
+
 
         tab.addAll(projects)
         recyclerView.adapter = adapter
-
+        for((i,j) in list.withIndex()){
+            projects.add(j.name)
+          //  recyclerView.get(i).setBackgroundColor((projectsList[i].color).toInt())
+        }
 
     }
 
@@ -53,6 +61,9 @@ class ProjectListActivity : AppCompatActivity(), View.OnClickListener {
         if(view?.tag != null){
           val index = view.tag as Int
           val project = projects[index]
+            view.setBackgroundColor((projectsList[index].color).toInt())
+            val intent = Intent(this, TaskListActivity::class.java)
+            startActivity(intent)
           Toast.makeText(this, "projet: ${project}", Toast.LENGTH_SHORT).show()
        }
     }

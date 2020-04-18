@@ -33,6 +33,7 @@ class AddProjectDialogFragment: DialogFragment() {
         val chooseColorButton = view.findViewById<Button>(R.id.choose_color_button)
         val colorShower = view.findViewById<Button>(R.id.color_shower)
         defaultColor = ContextCompat.getColor(App.instance,R.color.colorPrimary)
+        finalColor = defaultColor
         chooseColorButton.setOnClickListener {
             showColorPicker(colorShower)
         }

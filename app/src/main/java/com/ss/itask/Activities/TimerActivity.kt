@@ -4,6 +4,10 @@ import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.hardware.Sensor
+import android.hardware.SensorEvent
+import android.hardware.SensorEventListener
+import android.hardware.SensorManager
 import android.os.Build
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -25,6 +29,19 @@ import java.util.*
 class TimerActivity : AppCompatActivity() {
     lateinit  var roundingAlone: Animation
     lateinit  var icAnchor: ImageView
+    private lateinit var timer: CountDownTimer
+    private var timerLengthSeconds: Long = 0
+    private var timerState = TimerState.Stopped
+    private var secondsRemaining: Long = 0
+    lateinit var sensorManager: SensorManager
+    private var acelVal:Float = 0.0f
+    private var acelLast:Float = 0.0f
+    private var shake:Float = 0.0f
+
+    enum class TimerState{
+        Stopped, Paused, Running
+    }
+
 
     companion object {
         fun setAlarm(context: Context, nowSeconds: Long, secondsRemaining: Long): Long{
@@ -52,15 +69,6 @@ class TimerActivity : AppCompatActivity() {
 
     }
 
-    enum class TimerState{
-        Stopped, Paused, Running
-    }
-
-    private lateinit var timer: CountDownTimer
-    private var timerLengthSeconds: Long = 0
-    private var timerState = TimerState.Stopped
-
-    private var secondsRemaining: Long = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -71,25 +79,74 @@ class TimerActivity : AppCompatActivity() {
 //        supportActionBar?.setIcon(R.drawable.ic_timer)
 //        supportActionBar?.title = "      Timer"
 
-        fab_start.setOnClickListener{v ->
+        /*
+            Gestion du capteur accelerometre
+         */
+
+        acelVal = SensorManager.GRAVITY_EARTH
+        acelLast = SensorManager.GRAVITY_EARTH
+        shake = 0.00f
+
+        sensorManager= getSystemService(Context.SENSOR_SERVICE) as SensorManager
+        sensorManager.registerListener(sensorListener,sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),SensorManager.SENSOR_DELAY_NORMAL)
+
+
+     /*
+     * Timer managment Start, Pause, Stop
+     * */
+
+        fab_start.setOnClickListener{
             startTimer()
             timerState =  TimerState.Running
             updateButtons()
         }
-
-        fab_pause.setOnClickListener { v ->
+        fab_pause.setOnClickListener {
             timer.cancel()
             timerState = TimerState.Paused
             icAnchor.clearAnimation()
             updateButtons()
         }
-
-        fab_stop.setOnClickListener { v ->
+        fab_stop.setOnClickListener {
             timer.cancel()
             onTimerFinished()
         }
 
     }
+
+     private var sensorListener: SensorEventListener = object:SensorEventListener{
+         override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
+         }
+
+         override fun onSensorChanged(event: SensorEvent?) {
+             var x = event?.values?.get(0)
+             var y = event?.values?.get(1)
+             var z = event?.values?.get(2)
+
+             acelLast = acelVal
+             var tmp: Double = (x!!.times(x)).toDouble() + (y!!.times(y)).toDouble() + (z!!.times(z)).toDouble()
+             acelVal = Math.sqrt(tmp).toFloat()
+             var delta:Float = acelVal-acelLast
+             shake = shake*0.9f + delta
+             if (shake>24){
+                 if (timerState == TimerState.Paused){
+                     startTimer()
+                     timerState =  TimerState.Running
+                     updateButtons()
+                 }else if (timerState == TimerState.Running){
+                     timer.cancel()
+                     timerState = TimerState.Paused
+                     icAnchor.clearAnimation()
+                     updateButtons()
+                 }else{
+                     startTimer()
+                     timerState =  TimerState.Running
+                     updateButtons()
+                 }
+             }
+         }
+
+     }
+
 
     override fun onResume() {
         super.onResume()

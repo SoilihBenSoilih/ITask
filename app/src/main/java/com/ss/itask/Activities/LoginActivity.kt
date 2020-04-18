@@ -11,14 +11,12 @@ import com.ss.itask.App
 import com.ss.itask.Model.User
 import com.ss.itask.R
 import com.ss.itask.dao.Database
-import com.ss.itask.dao.UserDAO
 
 class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-
         val editText_email = findViewById<EditText>(R.id.editText_email)
         val editText_password = findViewById<EditText>(R.id.editText_password)
         val button_login = findViewById<Button>(R.id.button_login)
