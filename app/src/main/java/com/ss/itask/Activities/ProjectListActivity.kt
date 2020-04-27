@@ -9,6 +9,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.EditText
 import android.widget.SearchView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.get
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -45,8 +46,6 @@ class ProjectListActivity : AppCompatActivity(), View.OnClickListener {
         var list = database.getAllProjects()
         projectsList = list
 
-
-
         tab.addAll(projects)
         recyclerView.adapter = adapter
         for((i,j) in list.withIndex()){
@@ -61,11 +60,11 @@ class ProjectListActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(view: View?) {
         if(view?.tag != null){
           val index = view.tag as Int
-          val project = projects[index]
+          val project = projectsList[index]
             view.setBackgroundColor((projectsList[index].color).toInt())
-            val intent = Intent(this, TaskListActivity::class.java)
+            val intent = Intent(this,TaskListActivity::class.java)
+            intent.putExtra("ProjectId",project)
             startActivity(intent)
-          Toast.makeText(this, "projet: ${project}", Toast.LENGTH_SHORT).show()
        }
     }
 

@@ -3,9 +3,7 @@ package com.ss.itask.dao
 import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
-import android.database.sqlite.SQLiteException
 import android.database.sqlite.SQLiteOpenHelper
-import android.util.Log
 import com.ss.itask.Model.Project
 import com.ss.itask.Model.Task
 import com.ss.itask.Model.User
@@ -78,6 +76,7 @@ class Database (context: Context):SQLiteOpenHelper(context, DATABASE_NAME,null, 
                     cursor.getString(cursor.getColumnIndex(TaskDAO.TASK_KEY_NAME)),
                     cursor.getLong(cursor.getColumnIndex(TaskDAO.TASK_KEY_DURATION)),
                     cursor.getString(cursor.getColumnIndex(TaskDAO.TASK_KEY_DATE)),
+                    cursor.getInt(cursor.getColumnIndex(TaskDAO.TASK_KEY_STATUS)),
                     cursor.getLong(cursor.getColumnIndex(TaskDAO.TASK_KEY_PROJECT_ID))
                 )
                 tasks.add(task)
@@ -104,6 +103,7 @@ class Database (context: Context):SQLiteOpenHelper(context, DATABASE_NAME,null, 
                     cursor.getString(cursor.getColumnIndex(TaskDAO.TASK_KEY_NAME)),
                     cursor.getLong(cursor.getColumnIndex(TaskDAO.TASK_KEY_DURATION)),
                     cursor.getString(cursor.getColumnIndex(TaskDAO.TASK_KEY_DATE)),
+                    cursor.getInt(cursor.getColumnIndex(TaskDAO.TASK_KEY_STATUS)),
                     cursor.getLong(cursor.getColumnIndex(TaskDAO.TASK_KEY_PROJECT_ID))
                 )
                 tasks.add(task)

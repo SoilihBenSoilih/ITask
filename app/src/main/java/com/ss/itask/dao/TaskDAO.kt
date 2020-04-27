@@ -11,9 +11,10 @@ class TaskDAO {
         const val TASK_KEY_DURATION = "duration"
         const val TASK_KEY_DATE = "date"
         const val TASK_KEY_PROJECT_ID = "projectid"
+        const val TASK_KEY_STATUS = "status"
         const val USER_CREATE_TABLE = "CREATE TABLE $TASK_TABLE_NAME ( $TASK_KEY_ID " +
                 "INTEGER PRIMARY KEY, $TASK_KEY_NAME TEXT, $TASK_KEY_DURATION INTEGER," +
-                " $TASK_KEY_DATE TEXT, $TASK_KEY_PROJECT_ID INTEGER)"
+                " $TASK_KEY_DATE TEXT, $TASK_KEY_STATUS INTEGER, $TASK_KEY_PROJECT_ID INTEGER)"
         const val TASK_QUERY_SELECT_ALL = "SELECT * FROM $TASK_TABLE_NAME"
         const val TASK_QUERY_SELECT_BY_PROJECT = "SELECT * FROM $TASK_TABLE_NAME WHERE $TASK_KEY_PROJECT_ID = "
     }
@@ -23,6 +24,7 @@ class TaskDAO {
         values.put(TASK_KEY_NAME, task.name)
         values.put(TASK_KEY_DURATION,task.duration)
         values.put(TASK_KEY_DATE,task.date)
+        values.put(TASK_KEY_STATUS,task.status)
         values.put(TASK_KEY_PROJECT_ID,task.projectId)
         return values
     }
