@@ -1,6 +1,7 @@
 package com.ss.itask
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
@@ -8,8 +9,10 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ss.itask.Activities.ProjectAdapter
+import com.ss.itask.Activities.TaskListActivity
 import com.ss.itask.Model.Project
 import com.ss.itask.dao.Database
+import kotlinx.android.synthetic.main.content_task_list.*
 
 class ProjectListFramgent : Fragment(),
     ProjectAdapter.ProjectItemListener {
@@ -34,7 +37,6 @@ class ProjectListFramgent : Fragment(),
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater?.inflate(R.layout.fragment_first, container, false)
-
         recyclerView = view.findViewById(R.id.projects_recycler_view)
         recyclerView.layoutManager = LinearLayoutManager(context)
 
@@ -75,9 +77,9 @@ class ProjectListFramgent : Fragment(),
 
 
     override fun onProjectSelected(project: Project) {
-///******************************c'est dans cette fonction qu'il doit être appelé***************************************///
-        Toast.makeText(context,"click sur ${project.name} ", Toast.LENGTH_SHORT).show()
-///******************************c'est dans cette fonction qu'il doit être appelé***************************************///
+        val intent = Intent(this.context, TaskListActivity::class.java)
+        intent.putExtra("ProjectId",project)
+        startActivity(intent)
     }
 
 
@@ -90,7 +92,8 @@ class ProjectListFramgent : Fragment(),
         if(database.deleteProjectSelected(project)){
             projects.remove(project)
             adapter.notifyDataSetChanged()
-            Toast.makeText(context,"ville ${project.name} supprimée", Toast.LENGTH_SHORT).show()
+            App.database.deleteTaksByProject(project)
+            Toast.makeText(context,"Le projet ${project.name} supprimée", Toast.LENGTH_SHORT).show()
         }
         else{
             Toast.makeText(context,"erreur lors de la suppression", Toast.LENGTH_SHORT).show()

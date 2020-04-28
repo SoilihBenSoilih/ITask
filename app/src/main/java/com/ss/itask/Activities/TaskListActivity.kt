@@ -17,6 +17,7 @@ import com.ss.itask.TaskListAdapter
 import com.ss.itask.dao.TaskDAO
 
 import kotlinx.android.synthetic.main.activity_task_list.*
+import kotlinx.android.synthetic.main.content_task_list.*
 import java.util.*
 
 class TaskListActivity :  AppCompatActivity(), View.OnClickListener {
@@ -41,11 +42,23 @@ class TaskListActivity :  AppCompatActivity(), View.OnClickListener {
         projectName.text = project.name
         taskList = mutableListOf()
         taskList = App.database.getTasksByProject(project.id)
+        taskList.reverse()
         adapter = TaskListAdapter(taskList,this)
         recyclerView = findViewById(R.id.task_list_recyclerview)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
-
+        project_number_of_hours.text = (ProjectAdapter.getNumberOfHours(taskList)/60).toString()
+        var taskDone =0
+        var taskToDo = 0
+        taskList.forEach{
+                e->if (e.status==0){
+            taskToDo++
+        }else{
+            taskDone++
+        }
+        }
+        tasks_to_be_accomplished.text = taskToDo.toString()
+        completed_tasks.text = taskDone.toString()
         findViewById<ImageButton>(R.id.add_task_button).setOnClickListener {
             var taskNameEditText = findViewById<EditText>(R.id.add_taks_name_edit_text)
             val taskName = taskNameEditText.text

@@ -34,7 +34,6 @@ class ProjectListActivity : AppCompatActivity(), View.OnClickListener {
     }
 
 
-////**************************ce petit code ne doit plus être là****************************/////////////////////////////
     override fun onClick(view: View?) {
         if(view?.tag != null){
           val index = view.tag as Int
@@ -45,7 +44,6 @@ class ProjectListActivity : AppCompatActivity(), View.OnClickListener {
             startActivity(intent)
        }
     }
-////**************************ce petit code ne doit plus être là****************************/////////////////////////////
 
 
 

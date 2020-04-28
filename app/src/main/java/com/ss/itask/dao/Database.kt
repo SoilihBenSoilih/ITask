@@ -125,4 +125,11 @@ class Database (context: Context):SQLiteOpenHelper(context, DATABASE_NAME,null, 
             writableDatabase.delete("projects", "id = ?", arrayOf("${project.id}"))
         return deleteCount == 1
     }
+
+    fun deleteTaksByProject(project: Project):Boolean{
+        val deleteCount =
+            writableDatabase.delete("${TaskDAO.TASK_TABLE_NAME}", "${TaskDAO.TASK_KEY_PROJECT_ID} = ?", arrayOf("${project.id}"))
+        return deleteCount == 1
+    }
+
 }
