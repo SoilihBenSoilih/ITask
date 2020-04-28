@@ -62,6 +62,12 @@ class MainActivity : AppCompatActivity() {
             }
             addProjectDialogFragment.show(supportFragmentManager,"Add project dialog")
         }
+
+        try {
+            var user = App.database.getAllUsers().last()
+            user_name.text = user.pseudo
+        }catch (e:Exception){}
+
     }
 
 }

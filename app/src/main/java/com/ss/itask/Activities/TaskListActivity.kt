@@ -1,5 +1,6 @@
 package com.ss.itask.Activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Parcelable
 import android.view.View
@@ -21,7 +22,10 @@ import java.util.*
 class TaskListActivity :  AppCompatActivity(), View.OnClickListener {
 
     lateinit var project: Project
-    lateinit  var taskList: MutableList<Task>
+    companion object{
+        lateinit  var taskList: MutableList<Task>
+    }
+
     lateinit var  recyclerView : RecyclerView
 
     lateinit  var adapter :TaskListAdapter
@@ -34,10 +38,10 @@ class TaskListActivity :  AppCompatActivity(), View.OnClickListener {
         var projectName = findViewById<TextView>(R.id.projetct_name_tv)
         projectName.text = project.name
         taskList = mutableListOf()
+        taskList = App.database.getTasksByProject(project.id)
         adapter = TaskListAdapter(taskList,this)
         recyclerView = findViewById(R.id.task_list_recyclerview)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        taskList = App.database.getAllTasks()
         recyclerView.adapter = adapter
 
         findViewById<ImageButton>(R.id.add_task_button).setOnClickListener {
@@ -48,14 +52,26 @@ class TaskListActivity :  AppCompatActivity(), View.OnClickListener {
             }else{
                 var task = Task(taskName.toString(),0,"Ajourd'hui",0,project.id)
                 taskNameEditText.text.clear()
-                println(task.name)
-                println(App.database.saveTask((TaskDAO()).createTask(task)))
+                task.id = App.database.saveTask((TaskDAO()).createTask(task))
+                taskList.add(task)
+                adapter.notifyDataSetChanged()
             }
         }
     }
 
-    override fun onClick(v: View?) {
+    override fun onClick(v: View) {
+        if (v.tag!=null){
+            val index = v.tag as Int
+            val task =  taskList[index]
+            if (task.status==0){
+                val intent = Intent(this,TimerActivity::class.java)
+                intent.putExtra("tache",task)
+                startActivity(intent)
+            }else{
+                Toast.makeText(this, "Tâche déja effectuée", Toast.LENGTH_SHORT).show()
+            }
 
+        }
     }
 
 }

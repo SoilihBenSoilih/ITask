@@ -1,5 +1,6 @@
 package com.ss.itask
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import android.widget.RadioButton
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import com.ss.itask.Activities.TimerActivity
 import com.ss.itask.Model.Task
 
 class TaskListAdapter (val tasks: MutableList<Task>, val itemClickListener: View.OnClickListener)
@@ -24,14 +26,12 @@ class TaskListAdapter (val tasks: MutableList<Task>, val itemClickListener: View
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val viewItem = inflater.inflate(R.layout.task_list_item, parent, false)
-        println("1111111111111111")
         return ViewHolder(viewItem)
     }
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val task = tasks[position]
         holder.taskName.text = task.name
         holder.taskDate.text = task.date
-        println("888888888888888888888888888888")
         if (task.status.toInt()==1){
             holder.statusRadioButton.isChecked = true
         }

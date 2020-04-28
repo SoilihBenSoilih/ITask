@@ -9,6 +9,18 @@
     tools:showIn="@layout/activity_timer">
 
     <TextView
+        android:id="@+id/task_name_in_pomodoro"
+        android:layout_marginTop="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="Tache XYZ"
+        android:textSize="50sp"
+        android:textColor="#FFF"
+        />
+    <TextView
         android:id="@+id/textView_countdown"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -7,21 +7,31 @@ import android.graphics.Bitmap
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.FileUtils
 import android.provider.MediaStore
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.graphics.BitmapCompat
+import com.ss.itask.App
+import com.ss.itask.Model.User
 import com.ss.itask.R
+import com.ss.itask.dao.Database
+import com.ss.itask.dao.UserDAO
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView
+import java.io.File
 import java.io.IOException
+import java.lang.Exception
 
 class RegisterActivity : AppCompatActivity() {
     private  val PICK_IMAGE = 1
     lateinit var iconConnexion: ImageView
     var imageUri : Uri? = null
+    var bitmap: Bitmap?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
@@ -53,7 +63,31 @@ class RegisterActivity : AppCompatActivity() {
                 }
             }
             else{
-                Toast.makeText(this, "à implémenter", Toast.LENGTH_SHORT).show()
+
+                if(editText_confirm_password.text.toString() != editText_password.text.toString()){
+                    Toast.makeText(this, "Le mot de passe et la confirmation doivent etre identique",
+                        Toast.LENGTH_SHORT).show()
+                }else{
+                    try {
+                        //File("./", "icon.png").writeBitmap(bitmap!!, Bitmap.CompressFormat.PNG, 85)
+                        var user = User(imageUri.toString(),editText_pseudo.text.toString(),
+                            editText_email.text.toString(),editText_password.text.toString())
+                        var id = App.database.saveUser(UserDAO().createUser(user))
+                        if (id!=null){
+                            Toast.makeText(this, "Votre comte a ete cree avec succes", Toast.LENGTH_SHORT).show()
+                            user.id = id
+                            val intent = Intent(this, MainActivity::class.java)
+                            intent.putExtra("user",user)
+                            startActivity(intent)
+                        }else{
+
+                        }
+                        println("=========================SUcces==================")
+                    }catch (e:Exception){
+                        e.printStackTrace()
+                        println("===================Erreur====================")
+                    }
+                }
             }
 
         }
@@ -74,7 +108,6 @@ class RegisterActivity : AppCompatActivity() {
     }
 
 
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == PICK_IMAGE && resultCode == Activity.RESULT_OK && data!=null) {
@@ -89,8 +122,7 @@ class RegisterActivity : AppCompatActivity() {
 //                if (resultCode == RESULT_OK) {
 //                    var resultUri: Uri = result.uri
                     try {
-                        var bitmap: Bitmap =
-                            MediaStore.Images.Media.getBitmap(contentResolver, imageUri)
+                        bitmap =  MediaStore.Images.Media.getBitmap(contentResolver, imageUri)
                         iconConnexion.setImageBitmap(bitmap)
                     } catch (e: IOException) {
                         e.printStackTrace()
@@ -100,5 +132,11 @@ class RegisterActivity : AppCompatActivity() {
 //
 //        }
 
+    }
+    fun File.writeBitmap(bitmap: Bitmap, format: Bitmap.CompressFormat, quality: Int) {
+        outputStream().use { out ->
+            bitmap.compress(format, quality, out)
+            out.flush()
+        }
     }
 }

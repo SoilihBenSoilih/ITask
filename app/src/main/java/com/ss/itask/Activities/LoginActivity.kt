@@ -43,10 +43,6 @@ class LoginActivity : AppCompatActivity() {
 
         textView_register.setOnClickListener(){
             val intent = Intent(this, RegisterActivity::class.java)
-            val user = User("blalala","blavbla","blabla@gmail.com","blass123")
-            user.id = 1
-            val id = App.database.updateUSer(user)
-            Log.e("INSERTION","Valeur de l'id: $id")
             startActivity(intent)
         }
 

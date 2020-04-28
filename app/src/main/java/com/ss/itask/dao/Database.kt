@@ -94,7 +94,16 @@ class Database (context: Context):SQLiteOpenHelper(context, DATABASE_NAME,null, 
         return updateCount > 0
     }
 
-   private  fun getTasksByProject(projectId: Long):MutableList<Task>{
+    fun updateTask(task: Task) : Boolean {
+        val values = TaskDAO().createTask(task)
+        val updateCount = writableDatabase.update(TaskDAO.TASK_TABLE_NAME,
+            values,
+            "${TaskDAO.TASK_KEY_ID} = ?",
+            arrayOf("${task.id}"))
+        return updateCount > 0
+    }
+
+     fun getTasksByProject(projectId: Long):MutableList<Task>{
         val tasks = mutableListOf<Task>()
         readableDatabase.rawQuery(TaskDAO.TASK_QUERY_SELECT_BY_PROJECT+projectId,null).use { cursor ->
             while (cursor.moveToNext()){

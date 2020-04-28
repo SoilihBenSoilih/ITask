@@ -16,9 +16,13 @@ import android.view.MenuItem
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.resocoder.timertutorial.util.PrefUtil
+import com.ss.itask.App
+import com.ss.itask.Model.Project
+import com.ss.itask.Model.Task
 import com.ss.itask.R
 import com.ss.itask.TimerExpiredReceiver
 import com.ss.itask.util.NotificationUtil
@@ -37,6 +41,8 @@ class TimerActivity : AppCompatActivity() {
     private var acelVal:Float = 0.0f
     private var acelLast:Float = 0.0f
     private var shake:Float = 0.0f
+    lateinit var task: Task
+    private var saved = false
 
     enum class TimerState{
         Stopped, Paused, Running
@@ -99,6 +105,14 @@ class TimerActivity : AppCompatActivity() {
             startTimer()
             timerState =  TimerState.Running
             updateButtons()
+            if(!saved){
+                task.duration = task.duration + PrefUtil.getTimerLength(this)
+                task.status= 1
+                saved =true
+                task.date = getDate()
+                println(getDate())
+                App.database.updateTask(task)
+            }
         }
         fab_pause.setOnClickListener {
             timer.cancel()
@@ -110,6 +124,11 @@ class TimerActivity : AppCompatActivity() {
             timer.cancel()
             onTimerFinished()
         }
+
+        //gestion de la tache
+        task = intent.getParcelableExtra<Task>("tache")
+        task_name_in_pomodoro.text = task.name
+        Toast.makeText(this, "Tache: ${task.name}", Toast.LENGTH_SHORT).show()
 
     }
 
@@ -265,6 +284,27 @@ class TimerActivity : AppCompatActivity() {
                 fab_stop.isEnabled = true
             }
         }
+    }
+
+    private fun getDate():String{
+        val c = Calendar.getInstance()
+        val year = c.get(Calendar.YEAR)
+        val month = c.get(Calendar.MONTH)
+        val day = c.get(Calendar.DAY_OF_MONTH)
+        var dayString=""
+        var monthString=""
+        if(day<10){
+            dayString = "0$day"
+        }else{
+            dayString = "$day"
+        }
+        if (month<10){
+            monthString = "0$month"
+        }else{
+            monthString = "0$month"
+        }
+        val date = "${dayString}/${monthString}/${year}"
+        return date
     }
 
 
