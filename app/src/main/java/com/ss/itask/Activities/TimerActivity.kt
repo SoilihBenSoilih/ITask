@@ -81,7 +81,8 @@ class TimerActivity : AppCompatActivity() {
         setContentView(R.layout.activity_timer)
         icAnchor = findViewById(R.id.icanchor)
         roundingAlone = AnimationUtils.loadAnimation(this,R.anim.roundingalone)
-//        setSupportActionBar(toolbar as Toolbar)
+        saved = false
+//        setSupportActionBar(toolbar as Tgoolbar)
 //        supportActionBar?.setIcon(R.drawable.ic_timer)
 //        supportActionBar?.title = "      Timer"
 
