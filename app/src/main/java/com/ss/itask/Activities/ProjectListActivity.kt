@@ -3,25 +3,17 @@ package com.ss.itask.Activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.EditText
 import android.widget.SearchView
-import android.widget.TextView
-import android.widget.Toast
-import androidx.core.view.get
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ss.itask.Model.Project
-import com.ss.itask.ProjectListAdapter
 import com.ss.itask.R
 import com.ss.itask.dao.Database
 
 class ProjectListActivity : AppCompatActivity(), View.OnClickListener {
-
-    val database = Database(this)
 
     var projects = mutableListOf<String>()
     var projectsList = mutableListOf<Project>()
@@ -30,7 +22,6 @@ class ProjectListActivity : AppCompatActivity(), View.OnClickListener {
 
    lateinit var  recyclerView : RecyclerView
 
-    val adapter = ProjectListAdapter(projects,this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,23 +31,10 @@ class ProjectListActivity : AppCompatActivity(), View.OnClickListener {
         setSupportActionBar(toolbar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
-        recyclerView = findViewById<RecyclerView>(R.id.project_list_recyclerView)
-        recyclerView.layoutManager = LinearLayoutManager(this)
-
-        var list = database.getAllProjects()
-        projectsList = list
-
-        tab.addAll(projects)
-        recyclerView.adapter = adapter
-        for((i,j) in list.withIndex()){
-            projects.add(j.name)
-          //  recyclerView.get(i).setBackgroundColor((projectsList[i].color).toInt())
-        }
-
     }
 
 
-
+////**************************ce petit code ne doit plus être là****************************/////////////////////////////
     override fun onClick(view: View?) {
         if(view?.tag != null){
           val index = view.tag as Int
@@ -67,21 +45,7 @@ class ProjectListActivity : AppCompatActivity(), View.OnClickListener {
             startActivity(intent)
        }
     }
-
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-
-            when (item.itemId) {
-                R.id.action_search -> {
-
-                    }
-                R.id.action_delete -> {
-                    Toast.makeText(this, "action à implémenter.",Toast.LENGTH_SHORT).show()
-                }
-                else -> return super.onOptionsItemSelected(item)
-            }
-        return super.onOptionsItemSelected(item)
-    }
+////**************************ce petit code ne doit plus être là****************************/////////////////////////////
 
 
 

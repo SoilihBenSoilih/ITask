@@ -16,11 +16,12 @@
         app:title="Liste des projets"
         android:background="#5DB7F1"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/project_list_recyclerView"
-        android:layout_below="@+id/toolbar"
+    <fragment
+        android:id="@+id/city_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/project_list_item"/>
+        android:layout_below="@+id/toolbar"
+        android:name="com.ss.itask.ProjectListFramgent">
+    </fragment>
 
 </RelativeLayout>

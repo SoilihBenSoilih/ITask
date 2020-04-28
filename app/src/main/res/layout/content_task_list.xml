@@ -82,7 +82,7 @@
         app:layout_constraintLeft_toRightOf="@id/add_taks_name_edit_text"
         app:layout_constraintTop_toTopOf="@id/add_taks_name_edit_text"
         app:layout_constraintBottom_toBottomOf="@id/add_taks_name_edit_text"
-        android:src="@drawable/baseline_add_white_24dp"
+        android:src="@drawable/ic_add_circle_black_24dp"
         android:background="@drawable/button_rectangle_pink"/>
     <LinearLayout
         android:layout_width="match_parent"

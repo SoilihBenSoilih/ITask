@@ -34,6 +34,8 @@ class TaskListActivity :  AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_task_list)
         setSupportActionBar(toolbar)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+
         val project = intent.getParcelableExtra<Project>("ProjectId")
         var projectName = findViewById<TextView>(R.id.projetct_name_tv)
         projectName.text = project.name

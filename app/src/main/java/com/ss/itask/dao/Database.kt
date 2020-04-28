@@ -120,4 +120,9 @@ class Database (context: Context):SQLiteOpenHelper(context, DATABASE_NAME,null, 
         }
         return  tasks
     }
+    fun deleteProjectSelected(project: Project): Boolean {
+        val deleteCount =
+            writableDatabase.delete("projects", "id = ?", arrayOf("${project.id}"))
+        return deleteCount == 1
+    }
 }
